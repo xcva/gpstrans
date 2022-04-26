@@ -16,7 +16,7 @@ import (
 var traccarserveraddr string
 
 func main() {
-	flag.StringVar(&traccarserveraddr, "u", "", "traccar server addr")
+	flag.StringVar(&traccarserveraddr, "traccarserveraddr", "", "traccar server addr")
 	flag.Parse()
 	if traccarserveraddr == "" {
 		log.Fatalln("must have traccar server addr!")
