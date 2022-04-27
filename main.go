@@ -14,6 +14,7 @@ import (
 )
 
 var traccarserveraddr string
+var client *http.Client
 
 func main() {
 	flag.StringVar(&traccarserveraddr, "traccarserveraddr", "", "traccar server addr")
@@ -22,6 +23,7 @@ func main() {
 		log.Fatalln("must have traccar server addr!")
 	}
 	router := httprouter.New()
+	client = &http.Client{}
 	router.HandlerFunc("POST", "/", Index)
 	transserveraddr := "0.0.0.0:8006"
 
@@ -64,7 +66,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 			proxyReq.Header.Add(header, value)
 		}
 	}
-	client := &http.Client{}
+
 	resp, err := client.Do(proxyReq)
 	if err != nil {
 		log.Println(err)
