@@ -44,7 +44,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	clon, clat := coordTransform.WGS84toGCJ02(lon, lat)
 
-	// /?id=295182&timestamp=1650858135&lat=31.096157&lon=121.232793&speed=0&bearing=0&altitude=6.753916263580322&accuracy=35&batt=99
+	// /?id=295182&timestamp=1650858135&lat=&lon=&speed=0&bearing=0&altitude=6.753916263580322&accuracy=35&batt=99
 	data := make(url.Values)
 	data["id"] = []string{v.Get("id")}
 	data["timestamp"] = []string{v.Get("timestamp")}
